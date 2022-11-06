@@ -1,10 +1,10 @@
 import axios from "axios";
 // const BASE_URL = "http://my-node-express-project-env.eba-hxq4pgvm.us-east-1.elasticbeanstalk.com";
 
-const BASE_URL = "http://localhost:4000/api";
+const BASE_URL = "https://fse-node-jqx.herokuapp.com";
 
 const LOGIN_API = `${BASE_URL}/api/login`;
-const USERS_API = `${BASE_URL}/api/users`;
+const USERS_API = "https://fse-node-jqx.herokuapp.com/api/users";
 
 export const createUser = (user) =>
   axios.post(`${USERS_API}`, user)

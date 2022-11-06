@@ -1,10 +1,9 @@
-import {UserList} from "../components/profile/userList";
+import {UserList} from "../components/profile/user-list";
 import {screen, render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
 import {findAllUsers} from "../services/users-service";
 import axios from "axios";
 
-jest.mock('axios');
 
 const MOCKED_USERS = [
   {username: 'ellen_ripley', password: 'lv426', email: 'repley@weyland.com', _id: "123"},
@@ -26,21 +25,36 @@ test('user list renders async', async () => {
     <HashRouter>
       <UserList users={users}/>
     </HashRouter>);
-  const linkElement = screen.getByText(/NASA/i);
+  const linkElement = screen.getByText(/alice/i);
   expect(linkElement).toBeInTheDocument();
 })
 
-test('user list renders mocked', async () => {
-  axios.get.mockImplementation(() =>
-    Promise.resolve({ data: {users: MOCKED_USERS} }));
-  const response = await findAllUsers();
-  const users = response.users;
+describe('user list renders mocked',()=>{
 
-  render(
-    <HashRouter>
-      <UserList users={users}/>
-    </HashRouter>);
+  const axios = require('axios')
 
-  const user = screen.getByText(/ellen_ripley/i);
-  expect(user).toBeInTheDocument();
-});
+  beforeAll(() => {
+    jest.spyOn(axios, 'get').mockImplementation()
+  })
+
+  afterAll(() => {
+    jest.restoreAllMocks()
+  })
+
+  test('user list renders mocked', async () => {
+    axios.get.mockImplementation(() =>
+        Promise.resolve({ data: {users: MOCKED_USERS} }));
+    const response = await findAllUsers();
+    const users = response.users;
+
+    render(
+        <HashRouter>
+          <UserList users={users}/>
+        </HashRouter>);
+
+    const user = screen.getByText(/ellen_ripley/i);
+    expect(user).toBeInTheDocument();
+  });
+
+})
+
