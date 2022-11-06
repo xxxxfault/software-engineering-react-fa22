@@ -30,7 +30,7 @@ test('tuit list renders async', async () => {
     expect(linkElement[0]).toBeInTheDocument();
 
 
-})
+},10000)
 
 
 describe('tuits list renders mocked',()=>{
