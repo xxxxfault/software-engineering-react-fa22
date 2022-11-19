@@ -1,28 +1,37 @@
 import React from "react";
 
-export default class TuitStats extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+const TuitStats = ({tuit, likeTuit = () => {}}) => {
     return (
-      <div className="row mt-2">
-        <div className="col">
-          <i className="far fa-message me-1"></i>
-          {this.props.tuit.stats && this.props.tuit.stats.replies}
+        <div className="row mt-2">
+            <div className="col">
+                <i className="far fa-message me-1"></i>
+                {tuit.stats &&
+                    <span className="ttr-stats-replies">{tuit.stats.replies}</span>
+                }
+            </div>
+            <div className="col">
+                <i className="far fa-retweet me-1"></i>
+                {tuit.stats &&
+                    <span className="ttr-stats-retuits">{tuit.stats.retuits}</span>
+                }
+            </div>
+            <div className="col">
+          <span className="ttr-like-tuit-click" onClick={() => likeTuit(tuit)}>
+              {
+                   tuit.stats.likes > 0 &&
+                  <i className="fa-solid fa-thumbs-up"  style={{color: 'red'}}></i>
+              }
+              {
+                  tuit.stats.likes <= 0 &&
+                  <i className="fa-solid fa-thumbs-up"></i>
+              }
+              <span className="ttr-stats-likes"> {tuit.stats.likes}</span>
+          </span>
+            </div>
+            <div className="col">
+                <i className="far fa-inbox-out"></i>
+            </div>
         </div>
-        <div className="col">
-          <i className="far fa-retweet me-1"></i>
-          {this.props.tuit.stats && this.props.tuit.stats.retuits}
-        </div>
-        <div className="col">
-          <i className="far fa-heart me-1"></i>
-          {this.props.tuit.stats && this.props.tuit.stats.likes}
-        </div>
-        <div className="col">
-          <i className="far fa-inbox-out"></i>
-        </div>
-      </div>
     );
-  }
 }
+export default TuitStats;
