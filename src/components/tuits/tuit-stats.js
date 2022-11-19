@@ -36,7 +36,7 @@ const TuitStats = ({
                 <span className="ttr-dislike-tuit-click" onClick={() => dislikeTuit(tuit)}>
               {
                   tuit.stats.dislikes > 0 &&
-                  <i className="fa-regular fa-thumbs-down" style={{color: 'black'}}></i>
+                  <i className="fa-regular fa-thumbs-down" style={{color: 'blue'}}></i>
               }
             {
                 tuit.stats.dislikes <= 0 &&
