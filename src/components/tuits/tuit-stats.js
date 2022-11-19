@@ -1,6 +1,9 @@
 import React from "react";
 
-const TuitStats = ({tuit, likeTuit = () => {}}) => {
+const TuitStats = ({
+                       tuit, likeTuit, dislikeTuit = () => {
+    }
+                   }) => {
     return (
         <div className="row mt-2">
             <div className="col">
@@ -18,8 +21,8 @@ const TuitStats = ({tuit, likeTuit = () => {}}) => {
             <div className="col">
           <span className="ttr-like-tuit-click" onClick={() => likeTuit(tuit)}>
               {
-                   tuit.stats.likes > 0 &&
-                  <i className="fa-solid fa-thumbs-up"  style={{color: 'red'}}></i>
+                  tuit.stats.likes > 0 &&
+                  <i className="fa-solid fa-thumbs-up" style={{color: 'red'}}></i>
               }
               {
                   tuit.stats.likes <= 0 &&
@@ -28,6 +31,21 @@ const TuitStats = ({tuit, likeTuit = () => {}}) => {
               <span className="ttr-stats-likes"> {tuit.stats.likes}</span>
           </span>
             </div>
+            <div className="col">
+
+                <span className="ttr-dislike-tuit-click" onClick={() => dislikeTuit(tuit)}>
+              {
+                  tuit.stats.dislikes > 0 &&
+                  <i className="fa-regular fa-thumbs-down" style={{color: 'black'}}></i>
+              }
+            {
+                tuit.stats.dislikes <= 0 &&
+                <i className="fa-regular fa-thumbs-down"></i>
+            }
+                    <span className="ttr-stats-dislikes"> {tuit.stats.dislikes}</span>
+          </span>
+            </div>
+
             <div className="col">
                 <i className="far fa-inbox-out"></i>
             </div>
