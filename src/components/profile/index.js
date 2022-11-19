@@ -6,6 +6,7 @@ import TuitsAndReplies
   from "./tuits-and-replies";
 import Media from "./media";
 import MyLikes from "./my-likes";
+import MyDislikes from "./my-dislikes";
 
 const Profile = () => {
 
@@ -56,16 +57,16 @@ const Profile = () => {
           </h4>
           <h6 className="pt-0">@{profile.username}</h6>
           <p className="pt-2">
-            There's space for everybody. Sparkles
+            Nothing else
           </p>
           <span className="ps-2">67.6K Tuits</span>
           <p>
             <i className="far fa-location-dot me-2"></i>
-            Pale Blue Dot
+            Just here
             <i className="far fa-link ms-3 me-2"></i>
             <a href="https://www.nasa.gov/" className="text-decoration-none">nasa.gov</a>
             <i className="far fa-balloon ms-3 me-2"></i>
-            Born October 1, 1958
+            Born July 30, 1998
             <br/>
             <i className="far fa-calendar me-2"></i>
             Joined December 2007
@@ -93,6 +94,11 @@ const Profile = () => {
                     className="nav-link">
                 Likes</Link>
             </li>
+            <li className="nav-item">
+              <Link to="/profile/mydislikes"
+                    className="nav-link">
+                Dislikes</Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -105,8 +111,8 @@ const Profile = () => {
                element={<Media/>}/>
         <Route path="/mylikes"
                element={<MyLikes/>}/>
-        {/*<Route path="/*"*/}
-        {/*       element={<Profile/>}/>*/}
+        <Route path="/mydislikes"
+               element={<MyDislikes/>}/>
       </Routes>
     </div>
   );
