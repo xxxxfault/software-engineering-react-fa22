@@ -11,7 +11,9 @@ export const signup = (user) =>
     api.post(`${AUTH_API}/signup`, user)
         .then(response => response.data);
 export const profile = () =>
-    api.post(`${AUTH_API}/profile`)
+    api.post(`${AUTH_API}/profile`,{
+    withCredentials: true
+})
         .then(response => response.data);
 
 export const logout = (user) =>
