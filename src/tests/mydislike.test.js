@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import {createUser, deleteUsersByUsername} from "../services/users-service";
 import {createTuitByUser, deleteTuit} from "../services/tuits-service";
 import {findAllTuitsDislikedByUser, userDislikesTuit} from "../services/dislike-service";
