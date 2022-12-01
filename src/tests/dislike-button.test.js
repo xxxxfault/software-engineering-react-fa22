@@ -1,7 +1,7 @@
 import {createUser, deleteUsersByUsername} from "../services/users-service";
-import {createTuit, createTuitByUser, deleteTuit} from "../services/tuits-service";
+import { createTuitByUser, deleteTuit} from "../services/tuits-service";
 import {userDislikesTuit, userTogglesTuitDislikes} from "../services/dislike-service";
-import {login, signup} from "../services/auth-service";
+
 
 // mocked user and tuit to test dislike button
 const mockTuit={tuit:'tuit for dislike button'};
